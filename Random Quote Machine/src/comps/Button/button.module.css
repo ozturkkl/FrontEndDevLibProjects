@@ -1,0 +1,29 @@
+.button, .link {
+    font-size: 1.5rem;
+    outline: none;
+    color: var(--text-color);
+    text-shadow: 0 0 2px black;
+    border: 2px solid hsl(var(--main-color), calc(var(--main-color-l) - 20%));
+    background-color: hsl(var(--main-color), var(--main-color-l));
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 100ms ease-in-out;
+}
+
+.button:hover, .link:hover {
+    background-color: hsl(var(--main-color), calc(var(--main-color-l) + 5%));
+    border-color: hsl(var(--main-color), calc(var(--main-color-l) - 10%));
+}
+
+.button:active, .link:active {
+    background-color: hsl(var(--main-color), calc(var(--main-color-l) - 15%));
+    border-color: hsl(var(--main-color), calc(var(--main-color-l) - 30%));
+}
+
+.link {
+    text-decoration: none;
+    color: var(--text-color);
+    display: inline-block;
+}
