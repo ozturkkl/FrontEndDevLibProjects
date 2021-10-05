@@ -1,30 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+
+import { changeAppColor, twitterSvg } from './utils';
+import fetchQuote from './comps/Quote/fetchQuote';
+
 import Button from './comps/Button/Button';
 import Quote from './comps/Quote/Quote';
-import { cssAnimate } from './utils';
+
 
 function App() {
   const [quoteData, setQuote] = useState({
-    quote: "Hayat bir cay, mutluluk seker... Bizim gibi garipler cayi sekersiz icer!",
-    author: "Furkan Emirce"
+    quote: "",
+    author: ""
   })
+  useEffect(() => {
+    nextQuote()
+  }, [])
+  async function nextQuote() {
+    changeAppColor()
+    setQuote(await fetchQuote())
+  }
   return (
     <div className="App">
       <div id="quote-box">
         {/* TODO: QUOTE COMP AND FETCH QUOTE */}
         <Quote quoteData={quoteData} />
-        <Button link={`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${quoteData.quote}" -${quoteData.author}`} text="Tweet" id="tweet-quote" />
-        <Button id="new-quote" text="Next Quote" click={changeAppColor} />
+        <Button link={`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${quoteData.quote}" -${quoteData.author}`} text={twitterSvg} id="tweet-quote" />
+        <Button id="new-quote" text="Next Quote" click={nextQuote} />
       </div>
     </div>
   );
 }
 
-function changeAppColor() {
-  const randomColor = (Math.floor(Math.random() * 360) + 1).toString()
-  cssAnimate(500)
-  document.documentElement.style.setProperty("--main-color", `${randomColor}, 50%`)
-}
+
 
 export default App;

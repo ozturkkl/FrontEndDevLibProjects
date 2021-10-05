@@ -1,7 +1,7 @@
 import style from "./button.module.css"
 
 interface ButtonProps {
-    text: string,
+    text: string | JSX.Element,
     click?: () => void,
     id?: string,
     link?: string
@@ -14,6 +14,6 @@ export default function Button(props: ButtonProps) {
                 {props.text}
             </button>
             :
-            <a id={props.id} className={style.link} href={props.link} target="_blank">{props.text}</a>
+            <a id={props.id} className={style.link} href={props.link} target="_blank" rel="noreferrer">{props.text}</a>
     )
 }
