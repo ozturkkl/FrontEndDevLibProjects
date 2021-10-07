@@ -1,4 +1,4 @@
-import style from "./quote.module.css"
+import style from "./Quote.module.css"
 
 interface quoteProps {
     quoteData: {

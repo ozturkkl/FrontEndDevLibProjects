@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-import { changeAppColor, twitterSvg } from './utils';
-import fetchQuote from './comps/Quote/fetchQuote';
+import { changeAppColor, twitterSvg, fetchQuote } from './utils';
 
 import Button from './comps/Button/Button';
 import Quote from './comps/Quote/Quote';
